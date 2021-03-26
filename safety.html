@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Interplanetary Travel | Web Safety</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.js"></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-leaflet/latest/leaflet-mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+    <link rel="stylesheet" href="https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.css">
+    <script src="modernizr.custom.05819.js"> </script>
+  </head>
+  <body id="safety">
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mars.html">Destination: Mars</a></li>
+            <li><a href="saturn.html">Destination: Saturn</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="safety.html">Web Safety</a></li>
+            <li><a href="hubble.html">Hubble</a></li>
+          </ul>
+        </nav>
+        <h1>Web safety is still needed in space!</h1>
+      </header>
+      <main>
+        <p>Web security is incredibly important (yes, even in space.)<br>
+        Here are a few practices to stay safe while browsing the interplanetary web:<br><br>
+        1. Make sure to <a href="https://support.mozilla.org/en-US/kb/how-stay-safe-web#w_keep-your-software-and-operating-system-up-to-date">
+          keep browsers up to date</a> with the latest version.<br><br>
+        2. Ensure you have <a href="https://support.mozilla.org/en-US/kb/create-secure-passwords-keep-your-identity-safe">
+          secure passwords</a>.<br>
+        <br>
+        3. Check to see if your <a href="https://support.mozilla.org/en-US/kb/how-do-i-tell-if-my-connection-is-secure">
+          connection is secure</a>.<br>
+        <br><br>
+        Here is just a taste of the information a web app can get from you in an instant:
+        </p>
+      <fieldset>
+        <p id="browser"></p>
+        <p id="version"></p>
+        <p id="os"></p>
+        <p id="userAgent"></p>
+        <p id="width"></p>
+        <p id="online"></p>
+        <p id="longitude"></p>
+        <p id="latitude"></p>
+        <p id="altitude"></p>
+      </fieldset>
+      <p>Here is your location displayed on a map:<p>
+        <div id="map"></div>
+        <p class="errorMsg"></p>
+        <p><a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></p>
+      </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      "use strict";
+
+      var error = $(".errorMsg");
+      //var error = document.getElementsByClassName("errorMsg");
+
+      //retrieves user information and displays on web page into designated <p> tags
+
+      $("#browser").html("Web browser name: " + navigator.appName).css("fontWeight", "bold");
+      $("#version").html("Web browser version: " + navigator.appVersion).css("fontWeight", "bold");
+      $("#os").html("Operating platform: " + navigator.platform).css("fontWeight", "bold");
+      $("#userAgent").html("User agent: " + navigator.userAgent).css("fontWeight", "bold");
+      $("#width").html("Screen width: " + screen.width).css("fontWeight", "bold");
+      $("#online").html("Online status: " + navigator.onLine).css("fontWeight", "bold");
+      /*
+      document.getElementsByTagName("p")[1].innerHTML = "Web browser name: " + navigator.appName;
+      document.getElementsByTagName("p")[2].innerHTML = "Web browser version: " + navigator.appVersion;
+      document.getElementsByTagName("p")[3].innerHTML = "Operating platform: " + navigator.platform;
+      document.getElementsByTagName("p")[4].innerHTML = "User agent: " + navigator.userAgent;
+      document.getElementsByTagName("p")[5].innerHTML = "Screen width: " + screen.width;
+      document.getElementsByTagName("p")[6].innerHTML = "Online status: " + navigator.onLine;
+      */
+
+    // geolocation test
+    // run showLocation on success
+    if (navigator.geolocation)  {
+      navigator.geolocation.getCurrentPosition(showLocation, fail,
+      {timeout: 10000});
+    } else {
+      // run the fail() function on fail.
+      fail()
+    }
+
+    function showLocation(position) {
+      // display location in console log
+      console.log("Longitude: " + position.coords.longitude);
+      console.log("Latitude: " + position.coords.latitude);
+      console.log("Altitude: " + position.coords.altitude);
+      // display user location on webpage in designated <p> tags
+      $("#longitude").html("User longitude: " + position.coords.longitude).css("fontWeight", "bold");
+      $("#latitude").html("User latitude: " + position.coords.latitude).css("fontWeight", "bold");
+      $("#altitude").html("User altitude: " + position.coords.altitude).css("fontWeight", "bold");
+      //document.getElementsByTagName("p")[7].innerHTML = "User longitude: " + position.coords.longitude;
+      //document.getElementsByTagName("p")[8].innerHTML = "User latitude: " + position.coords.latitude;
+      //document.getElementsByTagName("p")[9].innerHTML = "User altitude: " + position.coords.altitude;
+      //displays user location on map
+      //coded to show the coordinates of the user
+      var coordsArray = [position.coords.latitude,position.coords.longitude];
+      //Creates the map object with the intended coordinates and sets zoom level to 14
+      var map = L.map('map').setView(coordsArray, 14);
+      //Creates the required WebGL metadata and chains it to the map object
+      var gl = L.mapboxGL({
+          attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+          accessToken: 'not-needed',
+          style: 'https://api.maptiler.com/maps/streets/style.json?key=qZjWTwtNTmBxDi3ZpTB5'
+      }).addTo(map);
+    //Creates the marker for the intended coordinates and chains it to the map object
+    var marker = L.marker(coordsArray).addTo(map);
+    }
+
+    // displays alert if the geolocation test fails
+    function fail() {
+      alert("Geolocation is not supported by this browser.");
+    }
+
+    </script>
+  </body>
+</html>

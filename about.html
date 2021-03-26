@@ -1,45 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="author" content="Lindsey Robinson" />
-    <title>Resume - Lindsey Robinson</title>
-    <link href="styles.css" rel="stylesheet" />
+    <title>Interplanetary Travel | Plan Your Trip</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="modernizr.custom.05819.js"> </script>
   </head>
-  <div class="resume-grid-container">
-    <body>
-      <div class="nav">
-        <a href="index.html"><img id="logo" src="images/logo.png" alt="logo" width=100px></a>
-        <ul class="nav">
-          <li> <a href="about.html">About Me</a></li>
-          <li> <a href="resume.html">Resume</a></li>
-          <li> <a href="portfolio.html">Portfolio</a></li>
-          <li> <a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="social">
-        <ul>
-          <li><a href="https://www.behance.net/lindseyrobinson5"><img src="images/Behance.png" width=40px></a></li>
-          <li><a href="https://github.com/LindseyRobinson"><img src="images/github.png" width=40px></a></li>
-          <li><a href="https://www.instagram.com/lindc3po/"><img src="images/insta.png" width=40px></a></li>
-          <li><a href="www.linkedin.com/in/lindsey-robinson-866b6015a"><img src="images/linkedin.png" width=40px></a></li>
-        </ul>
-      </div>
-      <div class="title squoval">A bit about me</div>
-      <div class="aboutme main">
-        <div class="col-1">
-          <img src="images/profile.png" alt="Lindsey Robinson">
-        </div>
-        <div class="col-2">
-        <p>Hello, I am Lindsey. I am a web designer and developer, 3D artist, animator, UI/UX designer, and web accessibility advocate. Generally speaking, I am just a big tech nerd.<br><br>
-I have my father to thank for my fascination with computers as he brought home our very own PC in the late ‘90s… Remember Windows ’95? It was in that folding chair in front the signature grey tube monitor, that I embarked into a lifelong journey to understand as much as I could about computer technology.<br><br>
-Flash forward to now: I will receive my bachelor’s degree from Arizona State University in Spring of 2021, and a master’s in graphic information technology in 2022. I hope to venture into many different careers in the tech industry with hopes to make a difference.</p>
-        </div>
-      </div>
-      <div class="footer">
-        <p>Copright Lindsey Robinson 2021 &copy; </p>
-      </div>
-    </body>
-  </div>
+  <body id="about">
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mars.html">Destination: Mars</a></li>
+            <li><a href="saturn.html">Destination: Saturn</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="safety.html">Web Safety</a></li>
+            <li><a href="hubble.html">Hubble</a></li>
+          </ul>
+        </nav>
+        <h1>Ready to get outta here?</h1>
+      </header>
+      <main>
+        <p>As our home planet of Earth has become closer to crossing the lines of<br>
+          uninhabitable, (for reasons both physical and mental) we saw the need <br>
+          to expand our options.<br>
+          We have looked to the stars all throughout history, now you can be among them.<br>
+          Travel packages start at a meer $1.3 million with the option of finance.<br>
+          All travel is made easy with the use of cryostasis.</p>
+  <!--        <form id="travelForm">
+            <fieldset>
+              <legend>Cost Calculator</legend>
+            <input type="number" min="1" max="4" id="travelnum" value="1">
+              <label for="travelernum">Number of Travelers | 1-4</label><br>
+
+              <input type="checkbox" id="saturntravel">
+              <label for="saturntravel">Saturn Travel | $3.6 Mil</label><br>
+
+              <input type="checkbox" id="marstravel">
+              <label for="marstravel">Mars Travel | $1.3 Mil</label><br>
+            </fieldset>
+          </form>
+        <p>Total Cost Estimate:<span id="estimate"></span></p>
+    -->
+      <form id="travelerInfo" novalidate="novalidate">
+        <fieldset>
+          <legend>Traveler Information</legend>
+          <label for="fname">Traveler's First Name:</label><br>
+          <input type="text" id="fname" name="contact" placeholder="Buzz" required><br>
+          <p id="fNameError" class="errorMsg"></p>
+          <label for="lname">Traveler's Middle Name:</label><br>
+          <input type="text" id="mname" name="contact" placeholder="Eugene" required><br>
+          <p id="mNameError" class="errorMsg"></p>
+          <label for="lname">Traveler's Last Name:</label><br>
+          <input type="text" id="lname" name="contact" placeholder="Aldrin" required><br>
+          <p id="lNameError" class="errorMsg"></p>
+          <label for="email">Email Address</label><br>
+          <input type="email" id="email" name="contact" placeholder="email@example.com" required><br>
+          <p id="emailError" class="errorMsg"></p>
+          <label for="phone">Phone Number:</label><br>
+          <input type="tel" id="phone" name="contact" placeholder="555-867-5309" required><br>
+          <p id="phoneError" class="errorMsg"></p>
+        </fieldset>
+        <fieldset id="planet">
+          <legend><span>Which planets are you interested in visiting?</span></legend>
+          <input type="checkbox" id="mercury" value ="mercury" name="planets">
+          <label for="mercury" id="mercurylabel">Mercury</label>
+          <input type="checkbox" id="venus" value ="venus" name="planets">
+          <label for="venus" id="venuslabel">Venus</label>
+          <input type="checkbox" id="uranus" value ="uranus" name="planets">
+          <label for="uranus" id="uranuslabel">Uranus</label>
+          <input type="checkbox" id="neptune" value ="neptune" name="planets">
+          <label for="neptune" id="neptunelabel">Neptune</label>
+          <input type="checkbox" id="pluto" value ="pluto" name="planets">
+          <label for="pluto" id="plutolabel">Pluto</label>
+        </fieldset>
+        <button id="submitBtn" onclick="addObject()">Submit</button>
+      </form>
+      <table id="travelerTable">
+        <caption>Traveler Information Input</caption>
+        <tr>
+          <td>First Name</td>
+          <td>Middle Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Phone</td>
+        </tr>
+    </table><br><br>
+    <p>Planets Selected:</p><br>
+    <p id="planetDisplay"></P>
+      </main>
+    </div>
+  <script>
+    //sets all form values to default
+  //  var travelNumber = 0;
+  //  var totalCost = 0;
+  //  var saturnTravel = false;
+  //  var marsTravel = false;
+var planet = [];
+var planetString;
+var formValidity = true;
+
+/*
+    //calculates all costs
+  function calcCost() {
+      var num = document.getElementById("travelnum");
+      totalCost = totalCost * num.value;
+      document.getElementById("estimate").innerHTML = "$" + totalCost;
+    }
+
+    // updates cost estimate when saturn or mars are checked
+    function toggleMars() {
+       (document.getElementById("marstravel").checked === false) ? totalCost -= 1300000 : totalCost += 1300000;
+       document.getElementById("estimate").innerHTML = "$" + totalCost;
+    }
+
+    function toggleSaturn() {
+       (document.getElementById("saturntravel").checked === false) ? totalCost -= 3600000 : totalCost += 3600000;
+       document.getElementById("estimate").innerHTML = "$" + totalCost;
+    }
+*/
+  //inserts placeholders into contact form for IE8
+function insertPlaceholders() {
+   if (!Modernizr.input.placeholder) {
+      document.getElementById("fname").value = "Buzz";
+      document.getElementById("mname").value = "Eugene"
+      document.getElementById("lname").value = "Aldrin";
+      document.getElementById("email").value = "email@example.com";
+      document.getElementById("phone").value = "555-867-5309";
+     }
+  }
+
+    // CHAPTER 8
+    // function adds and removes planet names from the planet[] array.
+function planetArray(event) {
+    if (event === undefined) { // get caller element in IE8
+      event = window.event;
+   }
+    var callerElement = event.target || event.srcElement;
+    var planetName = callerElement.value;
+    if (callerElement.checked) { // if box has just been checked
+      // adds selected planets to planet array using the push method
+      planet.push(planetName);
+   } else { // if box is unchecked
+     // declares variable listItems equal to all of the values under the #planet id using querySelectorAll.
+      var listItems = document.querySelectorAll("#planet");
+      for (var i = 0; i < listItems.length; i++) {
+      // if the selected planet names are unchecked, remove from planet array using splice method.
+          if (listItems[i].innerHTML === planetName) {
+            planet.splice(i, 1);
+            break;
+             }
+             displayPlanet();
+          }
+       }
+    }
+     // CHAPTER 8
+     // displays planet selection when "add a row" button is clicked.
+     // convert form input to strings from array/form values
+function displayPlanet() {
+     var planetDisplay = document.getElementById("planetDisplay");
+     var planetSelect = document.querySelectorAll("#planets");
+      // convert planet array to string
+     planetString = planet.toString();
+     // display string on page
+     planetDisplay.innerHTML = planetString;
+     planetDisplay.style.display = "block";
+   }
+
+// creates new object Passenger with properties of first, middle and last.
+function Passenger(first, middle, last, email, phone) {
+    this.firstName = first;
+    this.middleName = middle;
+    this.lastName = last;
+    this.emailAddr = email;
+    this.phoneNum = phone;
+  }
+      // object constructor creates custom objects then calls the addTableRow function to add the new objects to the travelerTable.
+function addObject() {
+    //declare variable values from the form textarea
+    var firstName = document.getElementById("fname").value;
+    var middleName = document.getElementById("mname").value;
+    var lastName = document.getElementById("lname").value;
+    var emailAddr = document.getElementById("email").value;
+    var phoneNum = document.getElementById("phone").value;
+    // creates variable equal to the obkect values
+    var myPassenger = new Passenger(firstName, middleName, lastName, emailAddr, phoneNum);
+    // pass parameter into addTableRow function
+    addTableRow(myPassenger);
+  }
+
+      // adds row to table with id "travelerTable" when button is pressed
+function addTableRow(addedPassenger) {
+    var table = document.getElementById("travelerTable");
+    //variable row inserts a row on the table
+    var row = table.insertRow();
+    //Create cells using the row variable
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    //Add the new object values into the respective table cells
+    cell1.innerHTML = addedPassenger.firstName;
+    cell2.innerHTML = addedPassenger.middleName;
+    cell3.innerHTML = addedPassenger.lastName;
+    cell4.innerHTML = addedPassenger.emailAddr;
+    cell5.innerHTML = addedPassenger.phoneNum;
+  }
+
+function validateForm(evt) {
+  if(evt.preventDefault)  {
+    evt.preventDefault();
+  } else {
+    evt.returnValue = false;
+  }
+  formValidity = true;
+  validateFname();
+  validateMname();
+  validateLname();
+  validateEmail();
+  validatePhone();
+}
+
+//CHAPTER 9
+// code added to check the input values of all text entry textAreas.
+// code for first-last name fieldschecks that the user only enters letters and a few speical characters such as hyphens.
+// code for email ensures that the user enters the correct example@example.com format
+// code fpr phone number ensures user enters only numbers AND that the numbers are in an accptable phone number pattern.
+function validateFname() {
+  var fInput = document.getElementById("fname");
+  var errorDiv = document.getElementById("fNameError");
+   // assigns name validation that only allows letters and certain special characters such as hyphens to variable nameCheck
+   var nameCheck = /^[0-9A-Za-z_@'-]+$/;
+   try {
+      if (nameCheck.test(fInput.value) === false) {
+         throw "Please provide a valid first name.";
+      }
+       // remove any email error styling and message
+      fInput.style.background = "";
+      errorDiv.innerHTML = "";
+      errorDiv.style.display = "none";
+   }
+   catch(msg) {
+      // display error message
+      errorDiv.innerHTML = msg;
+      errorDiv.style.display = "block";
+      // change input style
+      fInput.style.background = "rgb(255,233,233)";
+   }
+}
+
+function validateMname() {
+  var midInput = document.getElementById("mname");
+  var errorDiv = document.getElementById("mNameError");
+   // assigns name validation that only allows letters and certain special characters such as hyphens to variable nameCheck
+   var nameCheck = /^[0-9A-Za-z_@'-]+$/;
+   try {
+      if (nameCheck.test(midInput.value) === false) {
+         throw "Please provide a valid middle name.";
+      }
+       // remove any email error styling and message
+      midInput.style.background = "";
+      errorDiv.innerHTML = "";
+      errorDiv.style.display = "none";
+   }
+   catch(msg) {
+      // display error message
+      errorDiv.innerHTML = msg;
+      errorDiv.style.display = "block";
+      // change input style
+      midInput.style.background = "rgb(255,233,233)";
+   }
+}
+
+function validateLname() {
+   var lInput = document.getElementById("lname");
+   var errorDiv = document.getElementById("lNameError");
+      // assigns name validation that only allows letters and certain special characters such as hyphens to variable nameCheck
+   var nameCheck = /^[0-9A-Za-z_@'-]+$/;
+   try {
+      if (nameCheck.test(lInput.value) === false) {
+         throw "Please provide a valid last name.";
+      }
+       // remove any email error styling and message
+      lInput.style.background = "";
+      errorDiv.innerHTML = "";
+      errorDiv.style.display = "none";
+   }
+   catch(msg) {
+      // display error message
+      errorDiv.innerHTML = msg;
+      errorDiv.style.display = "block";
+      // change input style
+      lInput.style.background = "rgb(255,233,233)";
+   }
+}
+// CHAPTER 9
+// validate email from email input and verify it is the correct example@example.com pattern
+function validateEmail() {
+   var emailInput = document.getElementById("email");
+   var errorDiv = document.getElementById("emailError");
+   // assigns an email validation pattern to emailCheck to ensure the correct email format is used.
+   var emailCheck = /^[_\w\-]+(\.[_\w\-]+)*@[\w\-]+(\.[\w\-]+)*(\.[\D]{2,6})$/;
+   try {
+      if (emailCheck.test(emailInput.value) === false) {
+         throw "Please provide a valid email address";
+      }
+       // remove any email error styling and message
+      emailInput.style.background = "";
+      errorDiv.innerHTML = "";
+      errorDiv.style.display = "none";
+      // convert email address to lowercase
+      emailInput.value = emailInput.value.toLowerCase();
+   }
+   catch(msg) {
+      // display error message
+      errorDiv.innerHTML = msg;
+      errorDiv.style.display = "block";
+      // change input style
+      emailInput.style.background = "rgb(255,233,233)";
+   }
+}
+function validatePhone() {
+   var phoneInput = document.getElementById("phone");
+   var errorDiv = document.getElementById("phoneError");
+   // assigns phone validation pattern to variable phoneCheck
+   var phoneCheck = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+   try {
+      if (phoneCheck.test(phoneInput.value) === false) {
+         throw "Please provide a valid phone number";
+      }
+       // remove any email error styling and message
+      phoneInput.style.background = "";
+      errorDiv.innerHTML = "";
+      errorDiv.style.display = "none";
+   }
+   catch(msg) {
+      // display error message
+      errorDiv.innerHTML = msg;
+      errorDiv.style.display = "block";
+      // change input style
+      phoneInput.style.background = "rgb(255,233,233)";
+   }
+}
+
+    //creates backwards compatible event listeners
+    function createEventListeners() {
+  //  if(window.addEventListener) {
+  //    document.getElementById("travelnum").addEventListener("change", calcCost, false);
+//      document.getElementById("marstravel").addEventListener("change", toggleMars, false);
+  //    document.getElementById("saturntravel").addEventListener("change", toggleSaturn, false);
+  //    } else if (window.attachEvent) {
+  //      window.attachEvent("change", calcCost);
+  //      window.attachEvent("change", toggleMars);
+//        window.attachEvent("change", toggleSaturn);
+//        }
+        var planets = document.getElementsByName("planets");
+        if (planets[0].addEventListener) {
+           for (var i = 0; i < planets.length; i++) {
+              planets[i].addEventListener("change", planetArray, false);
+           }
+        } else if (planets[0].attachEvent) {
+           for (var i = 0; i < planets.length; i++) {
+              planets[i].attachEvent("onchange", planetArray);
+           }
+        }
+        var fInput = document.getElementById("fname");
+        var midInput = document.getElementById("mname");
+        var lInput = document.getElementById("lname");
+        var emailInput = document.getElementById("email");
+        var phoneInput = document.getElementById("phone");
+        if (fInput.addEventListener) {
+           fInput.addEventListener("change", validateFname, false);
+           midInput.addEventListener("change", validateMname, false);
+           lInput.addEventListener("change", validateLname, false);
+           emailInput.addEventListener("change", validateEmail, false);
+           phoneInput.addEventListener("change", validatePhone, false);
+        } else if (fInput.attachEvent) {
+           fInput.attachEvent("onchange", validateFname);
+           midInput.attachEvent("onchange", validateMname);
+           lInput.attachEvent("onchange", validateLname);
+           emailInput.attachEvent("onchange", validateEmail);
+           phoneInput.attachEvent("onchange", validatePhone);
+        }
+        var form = document.getElementById("travelerInfo");
+        if (form.addEventListener) {
+           form.addEventListener("click", displayPlanet, false);
+        } else if (button.attachEvent) {
+           form.attachEvent("onclick", displayPlanet);
+        }
+      }
+
+
+      if (window.addEventListener) {
+         window.addEventListener("load", createEventListeners, false);
+      } else if (window.attachEvent) {
+         window.attachEvent("onload", createEventListeners);
+      }
+
+  </script>
+  </body>
 </html>
